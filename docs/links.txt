@@ -1,0 +1,4 @@
+Postgres setup:
+Postgres version: 9.5.4
+Locale: en-US
+http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/
