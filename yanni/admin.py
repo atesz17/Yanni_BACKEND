@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from yanni.models import CuttingWheel, TopicNumber
+
+admin.site.register(CuttingWheel)
+admin.site.register(TopicNumber)
