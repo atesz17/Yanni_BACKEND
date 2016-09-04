@@ -6,6 +6,9 @@ class TopicNumber(models.Model):
 
     topic_number = models.CharField("Témaszám", max_length=20)
 
+    def __str__(self):
+        return self.topic_number
+
     class Meta:
         verbose_name = "Témaszám"
         verbose_name_plural = "Témaszámok"
