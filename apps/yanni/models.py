@@ -1,7 +1,9 @@
 from django.db import models
 
+from utils.models import TimeStampedModel
 
-class TopicNumber(models.Model):
+
+class TopicNumber(TimeStampedModel):
     """Témaszámot reprezentáló model"""
 
     topic_number = models.CharField("Témaszám", max_length=20)
@@ -14,7 +16,7 @@ class TopicNumber(models.Model):
         verbose_name_plural = "Témaszámok"
 
 
-class CuttingWheel(models.Model):
+class CuttingWheel(TimeStampedModel):
     """Vágókorongot reprezentáló model"""
 
     # TODO: merolapszam?
