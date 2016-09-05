@@ -17,6 +17,7 @@ class TopicNumber(TimeStampedModel):
 
 
 class PartNumber(TimeStampedModel):
+    """Cikkszámot reprezentáló model"""
     part_number = models.CharField("Cikkszám", max_length=20, unique=True)
 
     def __str__(self):
@@ -28,6 +29,7 @@ class PartNumber(TimeStampedModel):
 
 
 class Manufacturer(TimeStampedModel):
+    """Gyártót reprezentáló model"""
     name = models.CharField("Név", max_length=30, unique=True)
 
     def __str__(self):
