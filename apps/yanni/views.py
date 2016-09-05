@@ -1,7 +1,7 @@
 from django.views.generic import ListView
 
-from .models import CuttingWheel
+from .models import CuttingDisc
 
 
-class CuttingWheelList(ListView):
-    model = CuttingWheel
+class CuttingDiscList(ListView):
+    model = CuttingDisc

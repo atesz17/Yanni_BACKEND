@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import CuttingWheel, TopicNumber
+from .models import CuttingDisc, TopicNumber, PartNumber
 
-admin.site.register(CuttingWheel)
+admin.site.register(CuttingDisc)
 admin.site.register(TopicNumber)
+admin.site.register(PartNumber)

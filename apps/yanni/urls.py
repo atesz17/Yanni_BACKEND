@@ -1,8 +1,8 @@
 from django.conf.urls import url
 
-from .views import CuttingWheelList
+from .views import CuttingDiscList
 
 app_name = "yanni"
 urlpatterns = [
-    url(r'^$', CuttingWheelList.as_view(), name='cutting-wheel-list')
+    url(r'^$', CuttingDiscList.as_view(), name='cutting-wheel-list')
 ]

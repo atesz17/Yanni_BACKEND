@@ -6,7 +6,7 @@ from utils.models import TimeStampedModel
 class TopicNumber(TimeStampedModel):
     """Témaszámot reprezentáló model"""
 
-    topic_number = models.CharField("Témaszám", max_length=20)
+    topic_number = models.CharField("Témaszám", max_length=20, unique=True)
 
     def __str__(self):
         return self.topic_number
@@ -16,13 +16,31 @@ class TopicNumber(TimeStampedModel):
         verbose_name_plural = "Témaszámok"
 
 
-class CuttingWheel(TimeStampedModel):
+class PartNumber(TimeStampedModel):
+    part_number = models.CharField("Cikkszám", max_length=20, unique=True)
+
+    def __str__(self):
+        return self.part_number
+
+    class Meta:
+        verbose_name = "Cikkszám"
+        verbose_name_plural = "Cikkszámok"
+
+
+class CuttingDisc(TimeStampedModel):
     """Vágókorongot reprezentáló model"""
 
     # TODO: merolapszam?
     id = models.AutoField("Mérőlap szám", primary_key=True, auto_created=True)
     stock_count = models.IntegerField("Gyártott/beérkezett darabszám")
-    topic_number = models.ForeignKey(TopicNumber, on_delete=models.CASCADE) # TODO: ebben az oszlopban meg tobb dolog fel van tuntetve
+    # TODO: on_delete=model.SET_NULL ?
+    topic_number = models.ForeignKey(TopicNumber, on_delete=models.CASCADE, verbose_name="Témaszám") # TODO: ebben az oszlopban meg tobb dolog fel van tuntetve
+    # TODO: on_delete=model.SET_NULL ?
+    part_number = models.ForeignKey(PartNumber, on_delete=models.CASCADE, verbose_name="Cikkszám")
+    type_of_shape = models.IntegerField("Alakjel")
+    nominal_diameter = models.IntegerField("Névleges átmérő (mm)")
+    nominal_thickness = models.IntegerField("Névleges vastagság (mm)")
+
 
     class Meta:
         verbose_name = "Vágókorong"
