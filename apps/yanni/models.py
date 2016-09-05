@@ -27,6 +27,17 @@ class PartNumber(TimeStampedModel):
         verbose_name_plural = "Cikkszámok"
 
 
+class Manufacturer(TimeStampedModel):
+    name = models.CharField("Név", max_length=30, unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Gyártó"
+        verbose_name_plural = "Gyártók"
+
+
 class CuttingDisc(TimeStampedModel):
     """Vágókorongot reprezentáló model"""
 
@@ -39,7 +50,10 @@ class CuttingDisc(TimeStampedModel):
     part_number = models.ForeignKey(PartNumber, on_delete=models.CASCADE, verbose_name="Cikkszám")
     type_of_shape = models.IntegerField("Alakjel")
     nominal_diameter = models.IntegerField("Névleges átmérő (mm)")
-    nominal_thickness = models.IntegerField("Névleges vastagság (mm)")
+    nominal_thickness = models.DecimalField(max_digits=4, decimal_places=2, verbose_name="Névleges vastagság (mm)")
+    nominal_mortise = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Névleges furat (mm)")
+    # TODO: on_delete=model.SET_NULL ?
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, verbose_name="Gyártó")
 
 
     class Meta:
